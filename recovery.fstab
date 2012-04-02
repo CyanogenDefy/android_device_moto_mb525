@@ -1,0 +1,13 @@
+# This file is used to build the different partitions
+# dont change this file, it is not related to recovery
+#
+# the recovery one  : bootmenu/recovery/recovery.fstab
+# the busybox fstab : prebuilt/etc/busybox.fstab
+#
+# mount point   fstype  device
+
+/system         emmc    /dev/block/platform/omap/omap_hsmmc.1/by-num/p21
+/cache          emmc    /dev/block/platform/omap/omap_hsmmc.1/by-num/p24
+/data           emmc    /dev/block/platform/omap/omap_hsmmc.1/by-num/p25
+/boot           mtd     boot
+/recovery       mtd     recovery
