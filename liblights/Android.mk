@@ -12,6 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+ifeq ($(TARGET_BOOTLOADER_BOARD_NAME),mb525)
 
 LOCAL_PATH:= $(call my-dir)
 # HAL module implemenation, not prelinked and stored in
@@ -26,6 +27,8 @@ LOCAL_MODULE_PATH := $(TARGET_OUT_SHARED_LIBRARIES)/hw
 LOCAL_SHARED_LIBRARIES := liblog libcutils
 
 LOCAL_MODULE := lights.jordan
-LOCAL_MODULE_TAGS:= eng debug
+LOCAL_MODULE_TAGS:= eng debug optional
 
 include $(BUILD_SHARED_LIBRARY)
+
+endif

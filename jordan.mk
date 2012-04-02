@@ -45,7 +45,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # we have enough storage space to hold precise GC data
 PRODUCT_TAGS += dalvik.gc.type-precise
 
-DEVICE_PACKAGE_OVERLAYS += device/motorola/jordan/overlay
+DEVICE_PACKAGE_OVERLAYS += device/moto/mb525/overlay
 
 # Permissions
 PRODUCT_COPY_FILES += \
@@ -100,7 +100,8 @@ PRODUCT_PACKAGES += libOMX.TI.VPP
 # Defy stuff
 PRODUCT_PACKAGES += libfnc DefyParts Usb 
 
-PRODUCT_PACKAGES += e2fsck
+# Core stuff
+PRODUCT_PACKAGES += charge_only_mode mot_boot_mode lights.jordan sensors.jordan e2fsck
 
 # Publish that we support the live wallpaper feature.
 PRODUCT_PACKAGES += LiveWallpapers LiveWallpapersPicker MagicSmokeWallpapers 
@@ -112,7 +113,6 @@ PRODUCT_PACKAGES += RomUpdater
 
 # CM9 apps
 PRODUCT_PACKAGES += Trebuchet FileManager Torch
-#PRODUCT_PACKAGES += DSPManager libcyanogen-dsp
 
 # copy all vendor (motorola) kernel modules to system/lib/modules
 PRODUCT_COPY_FILES += $(shell test -d vendor/motorola/jordan/lib/modules &&  \
@@ -120,18 +120,18 @@ PRODUCT_COPY_FILES += $(shell test -d vendor/motorola/jordan/lib/modules &&  \
 	-printf '%p:system/lib/modules/%f ')
 
 # copy all others kernel modules under the "modules" directory to system/lib/modules
-PRODUCT_COPY_FILES += $(shell test -d device/motorola/jordan/modules && \
-	find device/motorola/jordan/modules -name '*.ko' \
+PRODUCT_COPY_FILES += $(shell test -d device/moto/mb525/modules && \
+	find device/moto/mb525/modules -name '*.ko' \
 	-printf '%p:system/lib/modules/%f ')
 
 # Prebuilt boot.img
-LOCAL_KERNEL := device/motorola/jordan/kernel
+LOCAL_KERNEL := device/moto/mb525/kernel
 PRODUCT_COPY_FILES += \
 	$(LOCAL_KERNEL):kernel
 
 # Blobs and bootmenu stuff
-$(call inherit-product, device/motorola/jordan/jordan-blobs.mk)
-$(call inherit-product, device/motorola/jordan/bootmenu/bootmenu.mk)
+$(call inherit-product, device/moto/mb525/jordan-blobs.mk)
+$(call inherit-product, device/moto/mb525/bootmenu/bootmenu.mk)
 
 ######################################################################################################################################
 
@@ -140,6 +140,6 @@ $(call inherit-product, build/target/product/full_base.mk)
 # Should be after the full_base include, which loads languages_full
 PRODUCT_LOCALES += hdpi
 
-PRODUCT_NAME := full_jordan
+PRODUCT_NAME := full_mb525
 PRODUCT_DEVICE := MB525
 

@@ -1,4 +1,4 @@
-ICS for Motorola Defy (Android 4.0.3 CM9)
+ICS for the Motorola Defy MB525 (Android 4.0.4 CM9)
 
 
 Download:
@@ -8,19 +8,12 @@ repo init -u git://github.com/tpruvot/android.git -b ics
 
 repo sync
 
-Note for DEFY+ :
-After the first "repo sync" Edit your manifest .repo/manifest.xml
-
-At the end of the file, change the revision of device/jordan to "ics_mb526"
-
-You need also to change the vendor/motorola revision to "ics-plus"
-
 
 Download RomManager (DELETED BY OUR BUILD SYSTEM)
 =================================================
 
-mkdir vendor/cyanogen/proprietary
-cd vendor/cyanogen && ./get-rommanager
+mkdir -p vendor/cm/proprietary
+cd vendor/cm && ./get-rommanager
 
 
 Build:
@@ -29,10 +22,10 @@ Build:
 rm -rf out/target
 
 For CM9 branch :
-  source build/envsetup.sh && brunch jordan
+  source build/envsetup.sh && brunch mb525
 
 or for AOSP :
-  source build/envsetup.sh && lunch full_jordan-eng
+  source build/envsetup.sh && lunch full_mb525-eng
   mka bacon
 
 Use the signed zip to update the defy with the bootmenu recovery, not the ota package !

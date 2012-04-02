@@ -1,5 +1,4 @@
-# Copyright 2005 The Android Open Source Project
-ifeq ($(TARGET_BOOTLOADER_BOARD_NAME),jordan)
+ifeq ($(TARGET_BOOTLOADER_BOARD_NAME),mb525)
 
 LOCAL_PATH:= $(call my-dir)
 include $(CLEAR_VARS)
@@ -17,16 +16,8 @@ LOCAL_STATIC_LIBRARIES := libunz libcutils libc
 LOCAL_SHARED_LIBRARIES := libhardware
 
 LOCAL_C_INCLUDES := external/zlib
-LOCAL_MODULE_TAGS := eng debug
+LOCAL_MODULE_TAGS := optional
 LOCAL_MODULE:= charge_only_mode
-
-# default is /system/bin or /sbin in boot.img
-ifeq ($(BOARD_USES_BOOTMENU),)
-
-LOCAL_MODULE_PATH := $(TARGET_ROOT_OUT_SBIN)
-LOCAL_UNSTRIPPED_PATH := $(TARGET_ROOT_OUT_SBIN_UNSTRIPPED)
-
-endif
 
 include $(BUILD_EXECUTABLE)
 

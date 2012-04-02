@@ -1,10 +1,6 @@
 # This script is included in squisher
 # It is the final build step (after OTA package)
 
-DEVICE_OUT=$ANDROID_BUILD_TOP/out/target/product/jordan
-DEVICE_TOP=$ANDROID_BUILD_TOP/device/motorola/jordan
-VENDOR_TOP=$ANDROID_BUILD_TOP/vendor/motorola/jordan
-
 # Delete unwanted apps
 rm -f $REPACK/ota/system/app/RomManager.apk
 rm -f $REPACK/ota/system/app/VideoEditor.apk

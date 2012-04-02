@@ -1,12 +1,14 @@
 # Required tools and blobs for bootmenu
-bm_device = device/motorola/jordan
+# This file is imported in jordan.mk, it is device specific (no conflicts on other devices)
+
+bm_device = device/moto/mb525
 
 PRODUCT_PACKAGES += \
 	bootmenu \
 	utility_lsof \
 	static_busybox \
 	static_logwrapper \
-	2nd-init.jordan \
+	2nd-init.mb525 \
 
 # config
 PRODUCT_COPY_FILES += \
@@ -103,5 +105,5 @@ PRODUCT_COPY_FILES += \
 
 # recovery tools
 PRODUCT_COPY_FILES += \
-	out/target/product/jordan/recovery/root/sbin/tune2fs:system/bootmenu/recovery/sbin/tune2fs
+	out/target/product/mb525/recovery/root/sbin/tune2fs:system/bootmenu/recovery/sbin/tune2fs \
 

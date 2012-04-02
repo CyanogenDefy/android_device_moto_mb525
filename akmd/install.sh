@@ -8,6 +8,6 @@ mm -B
 
 adb remount
 adb push akmd.sh /system/bin/akmd2
-adb push $ANDROID_BUILD_TOP/out/target/product/jordan/system/bin/akmd.free /system/bin/akmd.free
+adb push $ANDROID_BUILD_TOP/out/target/product/mb525/system/bin/akmd.free /system/bin/akmd.free
 adb shell killall -TERM akmd2 akmd.free
 

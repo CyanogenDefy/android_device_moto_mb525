@@ -32,7 +32,7 @@ BOARD_USES_GENERIC_AUDIO := false
 TARGET_NO_RADIOIMAGE := true
 TARGET_NO_BOOTLOADER := true
 TARGET_NO_PREINSTALL := true
-TARGET_BOOTLOADER_BOARD_NAME := jordan
+TARGET_BOOTLOADER_BOARD_NAME := mb525
 
 # Board properties
 TARGET_BOARD_PLATFORM := omap3
@@ -72,10 +72,10 @@ BOARD_HOSTAPD_DRIVER_NAME   := wilink
 
 # Bluetooth
 BOARD_HAVE_BLUETOOTH := true
-TARGET_CUSTOM_BLUEDROID := ../../../device/motorola/jordan/bluedroid.c
+TARGET_CUSTOM_BLUEDROID := ../../../device/moto/mb525/bluedroid.c
 
 # Usb Specific
-BOARD_CUSTOM_USB_CONTROLLER := ../../device/motorola/jordan/UsbController.cpp
+BOARD_CUSTOM_USB_CONTROLLER := ../../device/moto/mb525/UsbController.cpp
 BOARD_USE_USB_MASS_STORAGE_SWITCH := true
 BOARD_MASS_STORAGE_FILE_PATH := "/sys/devices/platform/usb_mass_storage/lun0/file"
 TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/devices/platform/usb_mass_storage/lun0/file"
@@ -87,7 +87,7 @@ BOARD_RECOVERYIMAGE_MAX_SIZE := $(call image-size-from-data-size,0x00500000)
 BOARD_SYSTEMIMAGE_MAX_SIZE := $(call image-size-from-data-size,0x07500000)
 BOARD_USERDATAIMAGE_MAX_SIZE := $(call image-size-from-data-size,0x04ac0000)
 BOARD_FLASH_BLOCK_SIZE := 131072
-TARGET_CUSTOM_RELEASETOOL := ./device/motorola/jordan/releasetools/squisher
+TARGET_CUSTOM_RELEASETOOL := ./device/moto/mb525/releasetools/squisher
 
 # OMX Stuff
 HARDWARE_OMX := true
@@ -112,7 +112,7 @@ BOARD_HAS_NO_SELECT_BUTTON := true
 BOARD_HAS_SMALL_RECOVERY := true
 BOARD_HAS_LARGE_FILESYSTEM := true
 BOARD_NEVER_UMOUNT_SYSTEM := true
-BOARD_CUSTOM_RECOVERY_KEYMAPPING:= ../../device/motorola/jordan/recovery_keys.c
+BOARD_CUSTOM_RECOVERY_KEYMAPPING:= ../../device/moto/mb525/recovery_keys.c
 BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext3
 TARGET_USERIMAGES_USE_EXT4 := false
 #TARGET_RECOVERY_UI_LIB := librecovery_ui_generic
@@ -127,7 +127,7 @@ TARGET_RECOVERY_PRE_COMMAND_CLEAR_REASON := true
 
 # Egl Specific
 #USE_OPENGL_RENDERER := true
-BOARD_EGL_CFG := device/motorola/jordan/egl.cfg
+BOARD_EGL_CFG := device/moto/mb525/egl.cfg
 DEFAULT_FB_NUM := 0
 BOARD_USE_YUV422I_DEFAULT_COLORFORMAT := true
 BOARD_NO_RGBX_8888 := true

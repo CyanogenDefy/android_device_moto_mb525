@@ -15,11 +15,9 @@
 #
 
 # This file is executed by build/envsetup.sh, and can use anything
-# defined in envsetup.sh.
+# defined in envsetup.sh. This is required for AOSP
 #
 # In particular, you can add lunch options with the add_lunch_combo
 # function: add_lunch_combo generic-eng
 
-add_lunch_combo full_jordan-eng
-add_lunch_combo full_jordan-userdebug
-
+add_lunch_combo full_mb525-userdebug

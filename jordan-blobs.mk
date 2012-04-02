@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-DEVICE_PREBUILT := device/motorola/jordan/prebuilt
+DEVICE_PREBUILT := device/moto/mb525/prebuilt
 
 #temporary cm9 bootanimation
 PRODUCT_COPY_FILES += \
@@ -41,7 +41,7 @@ PRODUCT_COPY_FILES += \
 
 
 PRODUCT_COPY_FILES += \
-	device/motorola/jordan/bootmenu/recovery/recovery.fstab:system/etc/recovery.fstab \
+	device/moto/mb525/bootmenu/recovery/recovery.fstab:system/etc/recovery.fstab \
 	$(DEVICE_PREBUILT)/etc/init.d/01sysctl:system/etc/init.d/01sysctl \
 	$(DEVICE_PREBUILT)/etc/init.d/02ipv6:system/etc/init.d/02ipv6 \
 	$(DEVICE_PREBUILT)/etc/init.d/03firstboot:system/etc/init.d/03firstboot \
@@ -60,15 +60,15 @@ PRODUCT_COPY_FILES += \
 	$(DEVICE_PREBUILT)/etc/wifi/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf \
 	$(DEVICE_PREBUILT)/etc/gpsconfig.xml:system/etc/gpsconfig.xml \
 	$(DEVICE_PREBUILT)/etc/location.cfg:system/etc/location.cfg \
-	device/motorola/jordan/vold.fstab:system/etc/vold.fstab \
-	device/motorola/jordan/media_profiles.xml:system/etc/media_profiles.xml \
-	device/motorola/jordan/modules/modules.alias:system/lib/modules/modules.alias \
-	device/motorola/jordan/modules/modules.dep:system/lib/modules/modules.dep 
+	device/moto/mb525/vold.fstab:system/etc/vold.fstab \
+	device/moto/mb525/media_profiles.xml:system/etc/media_profiles.xml \
+	device/moto/mb525/modules/modules.alias:system/lib/modules/modules.alias \
+	device/moto/mb525/modules/modules.dep:system/lib/modules/modules.dep \
 
 ifdef CM_RELEASE
-	PRODUCT_COPY_FILES += device/motorola/jordan/custom_backup_release.txt:system/etc/custom_backup_list.txt
+	PRODUCT_COPY_FILES += device/moto/mb525/custom_backup_release.txt:system/etc/custom_backup_list.txt
 else
-	PRODUCT_COPY_FILES += device/motorola/jordan/custom_backup_list.txt:system/etc/custom_backup_list.txt
+	PRODUCT_COPY_FILES += device/moto/mb525/custom_backup_list.txt:system/etc/custom_backup_list.txt
 endif
 
 #end of jordan-blobs.mk

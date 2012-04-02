@@ -1,3 +1,5 @@
+ifeq ($(TARGET_BOOTLOADER_BOARD_NAME),mb525)
+
 LOCAL_PATH := $(call my-dir)
 
 include $(CLEAR_VARS)
@@ -27,3 +29,4 @@ include external/stlport/libstlport.mk
 
 include $(BUILD_SHARED_LIBRARY)
 
+endif

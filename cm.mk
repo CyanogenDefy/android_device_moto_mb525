@@ -14,15 +14,15 @@
 # limitations under the License.
 #
 
-$(call inherit-product, device/motorola/jordan/full_jordan.mk)
+$(call inherit-product, device/moto/mb525/full_jordan.mk)
 
 # Inherit some common CM9 stuff.
 $(call inherit-product-if-exists, vendor/cm/config/common_full_phone.mk)
 $(call inherit-product-if-exists, vendor/cm/config/gsm.mk)
 
-PRODUCT_NAME := cm_jordan
+PRODUCT_NAME := cm_mb525
 PRODUCT_BRAND := MOTO
-PRODUCT_DEVICE := jordan
+PRODUCT_DEVICE := mb525
 PRODUCT_MODEL := MB525
 PRODUCT_MANUFACTURER := Motorola
 PRODUCT_SFX := JOREM_U3
@@ -36,7 +36,7 @@ DATE     := $(shell date +%Y%m%d)
 PRODUCT_BUILD_PROP_OVERRIDES += \
     PRODUCT_NAME=${PRODUCT_MODEL}_${PRODUCT_SFX} \
     TARGET_DEVICE=umts_jordan \
-    BUILD_FINGERPRINT=MOTO/MB526_RTDACH/umts_jordan:2.3.4/4.5.1-134_DFP-74/1313117579:user/release-keys \
+    BUILD_FINGERPRINT=MOTO/MB525/umts_jordan:2.3.4/4.5.1-134_DFP-74/1313117579:user/release-keys \
     PRIVATE_BUILD_DESC="umts_jordan_emara-user 2.3.4 4.5.1-134_DFP-74 1313117579 release-keys" \
     BUILD_NUMBER=${DATE} \
     BUILD_VERSION_TAGS=release-keys \
