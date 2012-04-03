@@ -1,4 +1,4 @@
-ifeq ($(TARGET_BOOTLOADER_BOARD_NAME),mb525)
+ifeq ($(TARGET_BOOTLOADER_BOARD_NAME),jordan)
 
 LOCAL_PATH:= $(call my-dir)
 
@@ -40,6 +40,6 @@ LOCAL_WHOLE_STATIC_LIBRARIES := \
     libaudiohw_legacy
 include $(BUILD_SHARED_LIBRARY)
 
-endif
 endif #BOARD_USES_AUDIO_LEGACY
 
+endif #jordan

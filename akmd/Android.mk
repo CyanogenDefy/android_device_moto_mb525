@@ -14,7 +14,8 @@ LOCAL_SRC_FILES := Akmd.cpp Calibrator.cpp main.cpp \
 #LOCAL_LDLIBS := -llog
 LOCAL_SHARED_LIBRARIES := liblog libcutils
 
-LOCAL_MODULE := akmd.free
+LOCAL_MODULE := akmd.jordan
+LOCAL_MODULE_STEM := akmd.free
 LOCAL_MODULE_TAGS := optional
 
 include $(BUILD_EXECUTABLE)
