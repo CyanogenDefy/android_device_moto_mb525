@@ -1,6 +1,11 @@
 # This script is included in squisher
 # It is the final build step (after OTA package)
 
+# set in squisher
+# DEVICE_OUT=$ANDROID_BUILD_TOP/out/target/product/mb525
+# DEVICE_TOP=$ANDROID_BUILD_TOP/device/moto/mb525
+# VENDOR_TOP=$ANDROID_BUILD_TOP/vendor/motorola/jordan
+
 # Delete unwanted apps
 rm -f $REPACK/ota/system/app/RomManager.apk
 rm -f $REPACK/ota/system/app/VideoEditor.apk
@@ -21,6 +26,9 @@ chmod +x $REPACK/ota/system/bin/mount_ext3.sh
 
 mkdir -p $REPACK/ota/system/etc/terminfo/x
 cp $REPACK/ota/system/etc/terminfo/l/linux $REPACK/ota/system/etc/terminfo/x/xterm
+
+# keep multiboot specific files, if installed
+cat $DEVICE_TOP/releasetools/multiboot_backup_list.txt >> $REPACK/ota/system/etc/custom_backup_list.txt
 
 # prebuilt boot, devtree, logo & updater-script
 rm -f $REPACK/ota/boot.img
