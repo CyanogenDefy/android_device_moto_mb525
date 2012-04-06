@@ -1,9 +1,9 @@
 #!/system/xbin/ash
 #
 
-busybox insmod /system/lib/modules/symsearch.ko 2>/dev/null
-busybox insmod /system/lib/modules/ionpvr.ko
-cat /proc/pvr/nodes
+#busybox insmod /system/lib/modules/symsearch.ko 2>/dev/null
+#busybox insmod /system/lib/modules/ionpvr.ko
+#cat /proc/pvr/nodes
 
-busybox insmod /system/lib/modules/ion.ko
+#busybox insmod /system/lib/modules/ion.ko
 
