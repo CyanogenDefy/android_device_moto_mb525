@@ -13,7 +13,7 @@ Download RomManager (DELETED BY OUR BUILD SYSTEM)
 =================================================
 
 mkdir -p vendor/cm/proprietary
-cd vendor/cm && ./get-rommanager
+cd vendor/cm && ./get-prebuilts
 
 
 Build:
