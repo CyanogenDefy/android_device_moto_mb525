@@ -154,3 +154,8 @@ ifeq ($(BOARD_DEFY_MODEL),DEFY_PLUS)
 BOARD_USE_CID_ROTATE_34 := true
 endif
 
+# If kernel source is present in repo, here is the location
+TARGET_KERNEL_SOURCE := $(ANDROID_BUILD_TOP)/kernel/moto/mb525
+TARGET_KERNEL_CONFIG := mapphone_mb525
+TARGET_KERNEL_MODULES_EXT := $(ANDROID_BUILD_TOP)/device/motorola/jordan/modules
+
