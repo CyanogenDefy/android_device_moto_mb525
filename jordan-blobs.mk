@@ -12,17 +12,19 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-DEVICE_PREBUILT := device/moto/mb525/prebuilt
+device_path = device/moto/mb525
 
-#temporary cm9 bootanimation
+DEVICE_PREBUILT := ${device_path}/prebuilt
+
+# Temporary cm9 bootanimation
 PRODUCT_COPY_FILES += \
-	$(DEVICE_PREBUILT)/bootanimation.zip:system/media/bootanimation.zip 
+	$(DEVICE_PREBUILT)/bootanimation.zip:system/media/bootanimation.zip
 
 PRODUCT_COPY_FILES += \
 	$(DEVICE_PREBUILT)/etc/terminfo/l/linux:system/etc/terminfo/l/linux \
-	$(DEVICE_PREBUILT)/etc/terminfo/x/xterm:system/etc/terminfo/x/xterm 
+	$(DEVICE_PREBUILT)/etc/terminfo/x/xterm:system/etc/terminfo/x/xterm \
 
-#key layouts, names must fit the ones in /proc/bus/input/devices, qwerty.kl is the fallback one.
+# Key layouts, names must fit the ones in /proc/bus/input/devices, qwerty.kl is the fallback one.
 PRODUCT_COPY_FILES += \
 	$(DEVICE_PREBUILT)/usr/idc/internal.idc:system/usr/idc/lm3530_led.idc \
 	$(DEVICE_PREBUILT)/usr/idc/internal.idc:system/usr/idc/accelerometer.idc \
@@ -37,11 +39,13 @@ PRODUCT_COPY_FILES += \
 	$(DEVICE_PREBUILT)/usr/keypad.kl:system/usr/keylayout/sholes-keypad.kl \
 	$(DEVICE_PREBUILT)/usr/keypad.kl:system/usr/keylayout/umts_jordan-keypad.kl \
 	$(DEVICE_PREBUILT)/usr/cpcap-key.kl:system/usr/keylayout/cpcap-key.kl \
-	$(DEVICE_PREBUILT)/usr/keychars/cpcap-key.kcm:system/usr/keychars/cpcap-key.kcm 
-
+	$(DEVICE_PREBUILT)/usr/keychars/cpcap-key.kcm:system/usr/keychars/cpcap-key.kcm \
 
 PRODUCT_COPY_FILES += \
-	device/moto/mb525/bootmenu/recovery/recovery.fstab:system/etc/recovery.fstab \
+	${device_path}/vold.fstab:system/etc/vold.fstab \
+	${device_path}/media_profiles.xml:system/etc/media_profiles.xml \
+	${device_path}/modules/modules.alias:system/lib/modules/modules.alias \
+	${device_path}/modules/modules.dep:system/lib/modules/modules.dep \
 	$(DEVICE_PREBUILT)/etc/init.d/01sysctl:system/etc/init.d/01sysctl \
 	$(DEVICE_PREBUILT)/etc/init.d/02ipv6:system/etc/init.d/02ipv6 \
 	$(DEVICE_PREBUILT)/etc/init.d/03firstboot:system/etc/init.d/03firstboot \
@@ -59,15 +63,17 @@ PRODUCT_COPY_FILES += \
 	$(DEVICE_PREBUILT)/etc/wifi/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf \
 	$(DEVICE_PREBUILT)/etc/gpsconfig.xml:system/etc/gpsconfig.xml \
 	$(DEVICE_PREBUILT)/etc/location.cfg:system/etc/location.cfg \
-	device/moto/mb525/vold.fstab:system/etc/vold.fstab \
-	device/moto/mb525/media_profiles.xml:system/etc/media_profiles.xml \
-	device/moto/mb525/modules/modules.alias:system/lib/modules/modules.alias \
-	device/moto/mb525/modules/modules.dep:system/lib/modules/modules.dep \
 
+# New CM9 backup list system (addon.d)
+PRODUCT_COPY_FILES += \
+	${device_path}/releasetools/addon.d/60-baseband.sh:system/addon.d/60-baseband.sh \
+	${device_path}/releasetools/addon.d/70-multiboot.sh:system/addon.d/70-multiboot.sh \
+
+# CM7 backup lists (deprecated)
 ifdef CM_RELEASE
-	PRODUCT_COPY_FILES += device/moto/mb525/releasetools/custom_backup_release.txt:system/etc/custom_backup_list.txt
+    PRODUCT_COPY_FILES += ${device_path}/releasetools/custom_backup_release.txt:system/etc/custom_backup_list.txt
 else
-	PRODUCT_COPY_FILES += device/moto/mb525/releasetools/custom_backup_list.txt:system/etc/custom_backup_list.txt
+    PRODUCT_COPY_FILES += ${device_path}/releasetools/custom_backup_list.txt:system/etc/custom_backup_list.txt
 endif
 
 #end of jordan-blobs.mk
