@@ -1,8 +1,8 @@
 # This script is included in releasetools/addons
 # It is the final build step (after OTA package)
 
-# DEVICE_OUT=$ANDROID_BUILD_TOP/out/target/product/jordan
-# DEVICE_TOP=$ANDROID_BUILD_TOP/device/motorola/jordan
+# DEVICE_OUT=$ANDROID_BUILD_TOP/out/target/product/mb525
+# DEVICE_TOP=$ANDROID_BUILD_TOP/device/moto/mb525
 # VENDOR_TOP=$ANDROID_BUILD_TOP/vendor/motorola/jordan
 
 echo "addons.sh: $1"
@@ -26,8 +26,8 @@ fi
 
 if [ "$1" = "kernel" ]; then
 	cat $DEVICE_TOP/releasetools/updater-addons-kernel > $REPACK/ota/META-INF/com/google/android/updater-script
-	cp -f $VENDOR_TOP/boot-234-134.smg $REPACK/ota/boot.img
-	cp -f $VENDOR_TOP/devtree-234-134.smg $REPACK/ota/devtree.img
+	cp -f $VENDOR_TOP/boot-222-179-4.smg $REPACK/ota/boot.img
+	cp -f $VENDOR_TOP/devtree-222-179-2.smg $REPACK/ota/devtree.img
 	OUTFILE=$OUT/kernel-gb.zip
 fi
 

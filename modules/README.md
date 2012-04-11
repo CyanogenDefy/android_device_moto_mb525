@@ -12,7 +12,7 @@ Add to your repo manifest \<project path="kernel/moto/mb525" name="CyanogenDefy/
 "repo sync" and then, in root of your android repo :
 
     . build/envsetup.sh
-    breakfast jordan
+    breakfast mb525
     
     make kernel
     make device_modules

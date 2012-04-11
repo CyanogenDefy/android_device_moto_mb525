@@ -1,4 +1,3 @@
-assert(getprop("ro.hardware") == "mapphone_umts" || getprop("ro.hardware") == "jordan_umts" || getprop("ro.product.device") == "jordan" || getprop("ro.build.product") == "umts_jordan" || getprop("ro.product.board") == "jordan");
 
 ui_print(" ");
 ui_print(" ");

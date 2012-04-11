@@ -159,5 +159,5 @@ endif
 # If kernel source is present in repo, here is the location
 TARGET_KERNEL_SOURCE := $(ANDROID_BUILD_TOP)/kernel/moto/mb525
 TARGET_KERNEL_CONFIG := mapphone_mb525
-TARGET_KERNEL_MODULES_EXT := $(ANDROID_BUILD_TOP)/device/motorola/jordan/modules
+TARGET_KERNEL_MODULES_EXT := $(ANDROID_BUILD_TOP)/device/moto/mb525/modules
 
