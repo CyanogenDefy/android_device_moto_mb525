@@ -67,8 +67,8 @@ PRODUCT_COPY_FILES += \
 # ICS sound
 PRODUCT_PACKAGES += \
 	hcitool hciattach hcidump \
-	libaudioutils audio.a2dp.default audio_policy.jordan \
-	libaudiohw_legacy audio.primary.jordan \
+	libaudioutils audio.a2dp.default libaudiohw_legacy \
+        audio_policy.mb525 audio.primary.mb525 \
 
 # ICS graphics
 PRODUCT_PACKAGES += libGLESv2 libEGL libGLESv1_CM

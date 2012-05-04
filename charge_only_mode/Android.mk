@@ -16,8 +16,9 @@ LOCAL_STATIC_LIBRARIES := libunz libcutils libc
 LOCAL_SHARED_LIBRARIES := libhardware
 
 LOCAL_C_INCLUDES := external/zlib
+LOCAL_MODULE:= charge_only_mode.mb525
+LOCAL_MODULE_STEM := charge_only_mode
 LOCAL_MODULE_TAGS := optional
-LOCAL_MODULE:= charge_only_mode
 
 include $(BUILD_EXECUTABLE)
 

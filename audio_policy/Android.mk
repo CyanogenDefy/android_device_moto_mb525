@@ -9,7 +9,7 @@ LOCAL_SHARED_LIBRARIES:= libc libcutils libutils libmedia
 LOCAL_STATIC_LIBRARIES := libmedia_helper
 LOCAL_WHOLE_STATIC_LIBRARIES:= libaudiopolicy_legacy
 LOCAL_MODULE_PATH := $(TARGET_OUT_SHARED_LIBRARIES)/hw
-LOCAL_MODULE:= audio_policy.jordan
+LOCAL_MODULE:= audio_policy.mb525
 LOCAL_MODULE_TAGS := optional
 
 ifeq ($(BOARD_HAVE_BLUETOOTH),true)
@@ -23,7 +23,7 @@ ifeq ($(BOARD_USES_AUDIO_LEGACY),true)
 
 LOCAL_PATH := $(call my-dir)
 include $(CLEAR_VARS)
-LOCAL_MODULE := audio.primary.jordan
+LOCAL_MODULE := audio.primary.mb525
 LOCAL_MODULE_STEM := audio.primary.$(TARGET_BOARD_PLATFORM)
 LOCAL_MODULE_PATH := $(TARGET_OUT_SHARED_LIBRARIES)/hw
 LOCAL_MODULE_TAGS := optional
