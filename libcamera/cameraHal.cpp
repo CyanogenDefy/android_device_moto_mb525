@@ -69,7 +69,7 @@ struct legacy_camera_device {
 
     int32_t                        previewWidth;
     int32_t                        previewHeight;
-    OverlayFormats                 previewFormat;
+    Overlay::Format                previewFormat;
 };
 
 /** camera_hw_device implementation **/
@@ -175,7 +175,7 @@ static void Yuv422iToRgb565(char* rgb, char* yuv422i, int width, int height, int
     }
 }
 
-static void processPreviewData(char *frame, size_t size, legacy_camera_device *lcdev, OverlayFormats format)
+static void processPreviewData(char *frame, size_t size, legacy_camera_device *lcdev, Overlay::Format format)
 {
 #ifdef LOG_EACH_FRAME
     LOGV("%s: frame=%p, size=%d, camera=%p", __FUNCTION__, frame, size, lcdev);
@@ -223,13 +223,13 @@ static void processPreviewData(char *frame, size_t size, legacy_camera_device *l
     } else {
         // The data we get is in YUV... but Window is RGB565. It needs to be converted
         switch (format) {
-            case OVERLAY_FORMAT_YUV422I:
+            case Overlay::FORMAT_YUV422I:
                 Yuv422iToRgb565((char*)vaddr, frame, lcdev->previewWidth, lcdev->previewHeight, stride);
                 break;
-            case OVERLAY_FORMAT_YUV420SP:
+            case Overlay::FORMAT_YUV420SP:
                 Yuv420spToRgb565((char*)vaddr, frame, lcdev->previewWidth, lcdev->previewHeight, stride);
                 break;
-            case OVERLAY_FORMAT_RGB565:
+            case Overlay::FORMAT_RGB565:
                 memcpy(vaddr, frame, size);
                 break;
             default:
@@ -246,7 +246,9 @@ static void processPreviewData(char *frame, size_t size, legacy_camera_device *l
 static void overlayQueueBuffer(void *data, void *buffer, size_t size)
 {
     if (data != NULL && buffer != NULL) {
-        processPreviewData((char*)buffer, size, (legacy_camera_device*) data, OVERLAY_FORMAT_YUV422I);
+        legacy_camera_device *lcdev = (legacy_camera_device *) data;
+        Overlay::Format format = (Overlay::Format) lcdev->overlay->getFormat();
+        processPreviewData((char*)buffer, size, lcdev, format);
     }
 }
 
@@ -415,7 +417,7 @@ static int camera_set_preview_window(struct camera_device * device, struct previ
 
     const char *previewFormat = params.getPreviewFormat();
     LOGD("%s: preview format %s", __FUNCTION__, previewFormat);
-    lcdev->previewFormat = getOverlayFormatFromString(previewFormat);
+    lcdev->previewFormat = Overlay::getFormatFromString(previewFormat);
 
     if (window->set_usage(window, GRALLOC_USAGE_SW_WRITE_OFTEN | GRALLOC_USAGE_SW_READ_OFTEN)) {
         LOGE("%s: could not set usage on gralloc buffer", __FUNCTION__);
@@ -430,7 +432,7 @@ static int camera_set_preview_window(struct camera_device * device, struct previ
     if (lcdev->hwif->useOverlay()) {
         LOGI("%s: Using overlay for device %p", __FUNCTION__, lcdev);
         lcdev->overlay = new Overlay(lcdev->previewWidth, lcdev->previewHeight,
-                lcdev->previewFormat, overlayQueueBuffer, (void*) lcdev);
+                Overlay::FORMAT_YUV422I, overlayQueueBuffer, (void*) lcdev);
         lcdev->hwif->setOverlay(lcdev->overlay);
     }
 
