@@ -102,17 +102,12 @@ static void Yuv420spToRgb565(char* rgb, char* yuv420sp, int width, int height, i
             int g = (y1192 - 833 * v - 400 * u);
             int b = (y1192 + 2066 * u);
 
-            if (r < 0) r = 0; else if (r > 262143) r = 262143;
-            if (g < 0) g = 0; else if (g > 262143) g = 262143;
-            if (b < 0) b = 0; else if (b > 262143) b = 262143;
+            r = std::max(0, std::min(r, 262143));
+            g = std::max(0, std::min(g, 262143));
+            b = std::max(0, std::min(b, 262143));
 
-            /* for RGB565 */
-            r = (r >> 13) & 0x1f;
-            g = (g >> 12) & 0x3f;
-            b = (b >> 13) & 0x1f;
-
-            rgb[k++] = g << 5 | b;
-            rgb[k++] = r << 3 | g >> 3;
+            rgb[k++] = ((g >> 7) & 0xe0) | ((b >> 13) & 0x1f);
+            rgb[k++] = ((r >> 10) & 0xf8) | ((g >> 15) & 0x07);
         }
         k += padding;
     }
@@ -137,39 +132,33 @@ static void Yuv422iToRgb565(char* rgb, char* yuv422i, int width, int height, int
 
             int v = (0xff & yuv422i[yuvIndex++]) - 128;
 
-            int y1192 = 1192 * y1;
-            int r = (y1192 + 1634 * v);
-            int g = (y1192 - 833 * v - 400 * u);
-            int b = (y1192 + 2066 * u);
+            int yy1 = 1192 * y1;
+            int yy2 = 1192 * y2;
+            int uv = 833 * v + 400 * u;
+            int uu = 2066 * u;
+            int vv = 1634 * v;
 
-            if (r < 0) r = 0; else if (r > 262143) r = 262143;
-            if (g < 0) g = 0; else if (g > 262143) g = 262143;
-            if (b < 0) b = 0; else if (b > 262143) b = 262143;
+            int r = yy1 + vv;
+            int g = yy1 - uv;
+            int b = yy1 + uu;
 
-            /* for RGB565 */
-            r = (r >> 13) & 0x1f;
-            g = (g >> 12) & 0x3f;
-            b = (b >> 13) & 0x1f;
+            r = std::max(0, std::min(r, 262143));
+            g = std::max(0, std::min(g, 262143));
+            b = std::max(0, std::min(b, 262143));
 
-            rgb[rgbIndex++] = g << 5 | b;
-            rgb[rgbIndex++] = r << 3 | g >> 3;
+            rgb[rgbIndex++] = ((g >> 7) & 0xe0) | ((b >> 13) & 0x1f);
+            rgb[rgbIndex++] = ((r >> 10) & 0xf8) | ((g >> 15) & 0x07);
 
-            y1192 = 1192 * y2;
-            r = (y1192 + 1634 * v);
-            g = (y1192 - 833 * v - 400 * u);
-            b = (y1192 + 2066 * u);
+            r = yy2 + vv;
+            g = yy2 - uv;
+            b = yy2 + uu;
 
-            if (r < 0) r = 0; else if (r > 262143) r = 262143;
-            if (g < 0) g = 0; else if (g > 262143) g = 262143;
-            if (b < 0) b = 0; else if (b > 262143) b = 262143;
+            r = std::max(0, std::min(r, 262143));
+            g = std::max(0, std::min(g, 262143));
+            b = std::max(0, std::min(b, 262143));
 
-            /* for RGB565 */
-            r = (r >> 13) & 0x1f;
-            g = (g >> 12) & 0x3f;
-            b = (b >> 13) & 0x1f;
-
-            rgb[rgbIndex++] = g << 5 | b;
-            rgb[rgbIndex++] = r << 3 | g >> 3;
+            rgb[rgbIndex++] = ((g >> 7) & 0xe0) | ((b >> 13) & 0x1f);
+            rgb[rgbIndex++] = ((r >> 10) & 0xf8) | ((g >> 15) & 0x07);
         }
         rgbIndex += padding;
     }
