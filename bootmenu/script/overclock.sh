@@ -63,6 +63,7 @@ param_safe()
   export scaling=2
   export ond_up_threshold=86
   export ond_sampling_rate=50000
+  echo 1 > /sys/power/sr_vdd2_autocomp
 }
 
 #############################################################
