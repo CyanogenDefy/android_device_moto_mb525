@@ -266,7 +266,7 @@ static void dataCallback(int32_t msgType, const sp<IMemory>& dataPtr, void* user
 {
     struct legacy_camera_device *lcdev = (struct legacy_camera_device *) user;
 
-    LOGV("CameraHAL_DataCb: msg_type:%d user:%p\n", msg_type, user);
+    LOGV("CameraHAL_DataCb: msgType:%d user:%p\n", msgType, user);
 
     if (lcdev->data_callback != NULL && lcdev->request_memory != NULL) {
         if (lcdev->clientData != NULL) {
@@ -295,8 +295,8 @@ static void dataTimestampCallback(nsecs_t timestamp, int32_t msgType,
 {
     struct legacy_camera_device *lcdev = (struct legacy_camera_device *) user;
 
-    LOGV("CameraHAL_DataTSCb: timestamp:%lld msg_type:%d user:%p\n",
-          timestamp /1000, msg_type, user);
+    LOGV("CameraHAL_DataTSCb: timestamp:%lld msgType:%d user:%p\n",
+          timestamp /1000, msgType, user);
 
     if (lcdev->data_timestamp_callback != NULL && lcdev->request_memory != NULL) {
         camera_memory_t *mem = genClientData(lcdev, dataPtr);
@@ -316,7 +316,7 @@ static void notifyCallback(int32_t msgType, int32_t ext1, int32_t ext2, void *us
 {
     struct legacy_camera_device *lcdev = (struct legacy_camera_device *) user;
 
-    LOGV("%s: msg_type:%d ext1:%d ext2:%d user:%p\n", __FUNCTION__, msgType, ext1, ext2, user);
+    LOGV("%s: msgType:%d ext1:%d ext2:%d user:%p\n", __FUNCTION__, msgType, ext1, ext2, user);
     if (lcdev->notify_callback != NULL) {
         lcdev->notify_callback(msgType, ext1, ext2, lcdev->user);
     }
@@ -618,7 +618,7 @@ static char* camera_get_parameters(struct camera_device * device)
     }
 
 #ifdef LOG_FULL_PARAMS
-    LOGV("%s: Parameters");
+    LOGV("%s: Parameters", __FUNCTION__);
     params.dump();
 #endif
 
