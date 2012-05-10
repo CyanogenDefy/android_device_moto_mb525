@@ -42,7 +42,9 @@
 
     </PreferenceCategory>
 
-    <PreferenceCategory android:title="@string/other_settings_title">
+    <PreferenceCategory android:key="other"
+                        android:title="@string/other_settings_title">
+
         <PreferenceScreen android:key="compass_calibrate"
                           android:title="@string/compass_calibrate">
                           <intent
@@ -51,13 +53,11 @@
                              android:targetClass="com.motorola.CompassCalibrate.CompassCalibrate" />
         </PreferenceScreen>
 
-        <PreferenceScreen android:key="baseband_switcher"
-                          android:title="@string/baseband_switcher">
-                          <intent
-                             android:action="android.intent.action.MAIN"
-                             android:targetPackage="com.itfunzbasebandswitcher"
-                             android:targetClass="com.itfunzbasebandswitcher.MainActivity" />
-        </PreferenceScreen>
+        <com.cyanogenmod.settings.device.BasebandSelectionPreference
+                android:key="baseband_selection"
+                android:persistent="false"
+                android:title="@string/baseband_selection" />
+
     </PreferenceCategory>
 
 </PreferenceScreen>
